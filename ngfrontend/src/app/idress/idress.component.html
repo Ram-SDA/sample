@@ -1,0 +1,91 @@
+
+<div class="row no-margins">
+  <div class="col-sm-12">
+    <img class="img-fluid" src="assets/images/pgBanners/idress.jpg"/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <h5 class="pgTitle"><span class="titleLine orange"></span>Customer Experience</h5>
+  </div>
+  <div class="col-sm-12">
+    <h6 class="pgHeader">Generative adversarial network reshapes Customer Experience</h6>
+  </div>
+</div>
+
+
+<div class="row topBigMargin iDress row">
+  <div class="col-sm-4">
+
+    <div class="card">
+      <div class="card-header text-center">
+        Select Model
+      </div>
+
+      <div class="card-body">
+
+        <ngb-carousel *ngIf="models" [showNavigationArrows]="false"  [showNavigationArrows]="(models.length>1)" [showNavigationIndicators]="false" [interval]="0">
+          <ng-template ngbSlide *ngFor="let item of models">
+            <img [src]="item.img" class="img-fluid" alt="Random slide" (click)=selectModel(item.tag)>
+
+          </ng-template>
+        </ngb-carousel>
+
+
+      </div>
+    </div>
+
+
+
+
+  </div>
+  <div class="col-sm-4">
+
+
+
+      <div class="card">
+        <div class="card-header text-center">
+          Select Dress
+        </div>
+
+        <div class="card-body">
+
+
+          <ngb-carousel *ngIf="models" [showNavigationArrows]="true" [showNavigationIndicators]="false" [interval]="0">
+            <ng-template ngbSlide *ngFor="let item of clothes">
+              <img [src]="item.img" class="img-fluid" alt="Random slide" (click)=selectCloth(item.tag)>
+
+            </ng-template>
+          </ngb-carousel>
+
+
+        </div>
+      </div>
+
+
+
+  </div>
+
+
+
+  <div class="col-sm-4">
+
+
+
+      <div class="card">
+        <div class="card-header text-center">
+          AI Generated Image
+        </div>
+
+        <div class="card-body finalImageHld">
+          <img  class="finalImage img-fluid" src="{{aiGenImage}}" />
+
+        </div>
+      </div>
+
+
+
+  </div>
+
+
+</div>

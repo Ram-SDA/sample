@@ -1,0 +1,68 @@
+<nav class="container navbar navbar-expand-lg navbar-light" style="    padding-bottom: 0px;background-color: #fff;">
+  <a class="navbar-brand" href="/home" ><img  src="assets/images/logo.png"></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse " id="navbarSupportedContent" *ngIf="auth.user.id>0">
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class=" navbar-nav align-self-end justify-content-end">
+          <li class="nav-item"><a class="nav-link disabled" disabled>{{auth.user.name}}</a></li>
+          <li class="nav-item"><a class="nav-link"  href="/logout">Signout</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-12">
+        <ul class="navbar-nav align-self-end justify-content-end ">
+
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEC"
+
+               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Experience Center
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownEC">
+              <a class="dropdown-item" href="/realfake" >Fake or Real Quiz</a>
+              <a class="dropdown-item" href="/yolo">Object Identification</a>
+
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDL" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Deep Learning
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownDL">
+              <a class="dropdown-item" href="/idress">Customer Experience</a>
+              <a class="dropdown-item" href="/scm">Process Intelligence</a>
+
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownKM" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Knowledge Management
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownKM">
+              <a class="dropdown-item" href="/iassist">iAssist Health Care</a>
+              <a class="dropdown-item" href="/imanufacture">iAssist Manufacturing</a>
+
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBC" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Block Chain
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownBC">
+              <a class="dropdown-item" href="/itrust">iTrust</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+
+
+  </div>
+</nav>

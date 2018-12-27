@@ -1,0 +1,116 @@
+<div class="row no-margins">
+  <div class="col-sm-12">
+    <img class="img-fluid" src="assets/images/pgBanners/imanufacture.jpg"/>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h5 class="pgTitle"><span class="titleLine orange"></span>iAssist Manufacturing</h5>
+  </div>
+  <div class="col-sm-12">
+    <h6 class="pgHeader">An intelligent Knowledge Management system that combines Natural Language Processing with Cognitive Analytics.</h6>
+  </div>
+</div>
+
+
+
+<form (submit)="getNLP()" >
+
+  <div class="row topBigMargin">
+    <div class="col-8 offset-sm-1">
+
+      <input type="text" class="form-control"
+             [(ngModel)]="query"
+             name="query"
+             placeholder="Ask iAssist" aria-label="Ask iAssist" aria-describedby="basic-addon2">
+
+    </div>
+    <div class="col-2  text-right">
+      <button class="btn btn-primary"  type="submit">Ask Query</button>
+    </div>
+
+  </div>
+
+
+</form>
+<div class="row iAssist" *ngIf="loading">
+  <div class="col-sm-12">
+    <p>Please wait while data is loaded...</p>
+
+  </div>
+</div>
+
+
+
+
+
+<div class="row iAssist accordion" *ngIf="viewSymptoms && loading==false">
+  <div class="col">
+    <ngb-accordion #acc="ngbAccordion"  activeIds="">
+      <ngb-panel >
+        <ng-template ngbPanelTitle>
+          <span style="color:black;"><b>Symptoms</b> </span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+
+
+          <div class="table-responsive">
+            <table class="table table-striped tablme-sm">
+              <thead class="thead-dark">
+              <tr>
+                <th style="width: 30%">Model</th>
+                <th style="width: 30%">Parts</th>
+                <th style="width: 40%">Symptoms</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th >{{nlpQuery.model.join()}}</th>
+                <td>{{nlpQuery.parts.join()}}</td>
+                <td>{{nlpQuery.symptoms.join()}}</td>
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </ng-template>
+      </ngb-panel>
+
+    </ngb-accordion>
+
+  </div>
+</div>
+
+<div class="row iAssist" *ngIf="expertData.length && loading==false">
+  <div class="col-sm-12"><h5>Recommended Corrective Actions </h5></div>
+
+  <div class="col-sm-12">
+
+
+    <div class="table-responsive">
+      <table class="table table-striped tablme-sm">
+        <thead class="thead-dark">
+        <tr>
+          <th style="width: 10%" >Rank</th>
+          <th style="width: 30%">Root Cause</th>
+          <th style="width: 60%">Corrective Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of expertData;let i = index">
+          <td class="text-center">{{i+1}}</td>
+          <td>{{item.RC}}</td>
+          <td>{{item.CA}}</td>
+
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

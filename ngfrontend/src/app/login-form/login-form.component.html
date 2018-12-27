@@ -1,0 +1,66 @@
+
+
+
+    <div role="main" class="fullscreen_bg loginPage">
+
+        <div class="row">
+            <div class="col-sm-5 offset-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form #loginForm="ngForm" (submit)="login()" class="col s12 white">
+                            <div class="row form-group">
+                                <div class="col-sm-4 text-left ">
+                                    <label class=" col-form-label" for="email">Email*</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="email" class="form-control" [(ngModel)]="email" name="email" id="email"
+                                           #inp_email="ngModel"
+                                           placeholder="Email" required>
+                                    <div [hidden]="inp_email.valid || inp_email.pristine"
+                                         class="alert alert-danger">
+                                        <small>Email is required</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-sm-4 text-left ">
+                                    <label class="col-form-label" for="password">Password*</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="password" id="password" [(ngModel)]="password"
+                                           #inp_password="ngModel"
+                                           name="password" placeholder="Password" required>
+                                    <div [hidden]="inp_password.valid || inp_password.pristine"
+                                         class="alert alert-danger">
+                                        <small>Password is required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row form-group">
+                                <div class="col-sm-8 offset-sm-4 text-left">
+                                    <button [disabled]="!loginForm.valid" class="btn btn-primary " type="submit">Login
+                                    </button>
+                                </div>
+
+
+                            </div>
+                            <div class="row form-group" *ngIf="loginFailed">
+                                <div class="col" class="alert alert-danger">
+                                    The above credentials do not match any user. Please try again with correct credentials.
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+

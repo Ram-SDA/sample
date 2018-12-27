@@ -1,0 +1,86 @@
+<simple-notifications></simple-notifications>
+
+<div class="row no-margins">
+  <div class="col-sm-12">
+    <img class="img-fluid" src="assets/images/pgBanners/scm.jpg"/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <h5 class="pgTitle"><span class="titleLine orange"></span>Process Intelligence</h5>
+  </div>
+  <div class="col-sm-12">
+    <h6 class="pgHeader">AI enabled Supply chain Operational Process Intelligence - Sourcing</h6>
+  </div>
+</div>
+
+<div class="row topBigMargin">
+  <div class="col text-center">
+    <div >
+      <h5>Overall Status</h5>
+      <canvas id="dsCanvas1"></canvas>
+    </div>
+  </div>
+  <div class="col text-center">
+    <div >
+      <h5>Status of Open Cases</h5>
+      <canvas id="dsCanvas2"></canvas>
+      <small class="text-center">Click on any segment above.</small>
+    </div>
+  </div>
+</div>
+<div class="row iAssist">
+  <div class="col-sm-12" *ngIf="scmData">
+    <p>List of Open Cases in <b>{{scmDisplayType}}</b> status ({{pagination.total}})</p>
+    <div class="table-responsive">
+      <table class="table table-striped tablme-sm">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Case ID</th>
+          <th scope="col">Current Activity</th>
+          <th scope="col">ETA</th>
+          <th scope="col">Resource</th>
+          <th scope="col">Select</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of scmData;let i = index">
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.activity}}</td>
+          <td>{{item.duration}}</td>
+          <td>{{item.resource}}</td>
+          <td><div class="form-group form-check">
+            <input   type="checkbox" class="form-check-input"
+                   [value]="true"
+                     [(ngModel)]="item.selected"
+                     [disabled]="scmType=='onTime'"
+                   (change)="selectRow($event.target.checked,item)">
+
+          </div></td>
+        </tr>
+
+
+
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-4">
+        <button type="button" *ngIf="selectedRows.length" class="btn btn-primary btn-sm" (click)="sendReminder()">Send Reminder</button>
+      </div>
+      <div class="col-sm-8">
+        <ngb-pagination class="d-flex justify-content-end"
+                        (pageChange)="pageChanged($event)"
+                        [collectionSize]="pagination.total" [maxSize]="5" [pageSize]="10" [(page)]="pagination.page" size="sm"></ngb-pagination>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+</div>
+

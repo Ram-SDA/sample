@@ -1,0 +1,203 @@
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DARTexon</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var symdata = new Array();
+		function extractsymptoms()
+		{
+			var word = document.getElementById("querybox").value;
+			var jsontext=httpGet("http://35.194.103.127:8001/getjson/"+word+" is")
+			document.getElementById("outputdiv").innerHTML=jsontext
+			symdata=jsontext;
+			esyminput=(JSON.parse(jsontext))['symptoms']
+			getdiagnosis(esyminput);
+		}
+		function httpGet(theUrl)
+		{
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+			xmlHttp.send( null );
+			return xmlHttp.responseText;
+		}
+		function getdiagnosis(symptomlist)
+		{
+		//alert(symptomlist.length)
+		var diaginput="";
+		for( symp in symptomlist)
+		{
+			diaginput=symptomlist[symp]+" "+diaginput;
+		}
+		var diagout=httpGet("http://35.194.103.127:5000/diagnosis/"+diaginput)
+				//alert(diagout)
+				var diagjson = JSON.parse(diagout)['diagnosis']
+				var diagkeys = [];
+				var diagdivout	 = document.getElementById("diagdiv");
+				var diaglabel = document.createElement('label')
+				for(var r in diagjson) 
+				{
+					diagkeys.push("<li>"+diagjson[r]+ "</li>");
+					//alert(r.toString())
+				}
+				diaglabel.innerHTML="<b>"+(diagkeys.toString().replace(/,/g,"")) + "</b>"
+				diagdivout.appendChild(diaglabel)
+				//alert(diagkeys)
+			// label.appendChild(document.createTextNode('text for label after checkbox'));
+		}
+
+
+	</script>
+
+	
+	
+	<style>
+	#wrapbody
+	{
+		background-image: url("Images/Capture.png");
+		background-color:rgb(139, 138, 138);
+		font-family: Arial, Helvetica, sans-serif;
+		background-blend-mode: overlay;	 
+		height: auto;
+		background-repeat: no-repeat;
+	}
+	.fon
+	{
+		font-family: "Times New Roman", Times, serif;
+	}
+
+	.imgicon
+	{
+		position: fixed;
+		top: 10px;
+		left: 120px;
+	}
+
+	.conten {
+		position: fixed;
+		top:20%;
+		bottom: 25%;
+		right: 28%;
+		height:50%;
+		width:50%;
+		background: rgba(0, 0, 0, 0.3); /* Black background with transparency */
+		color: #f1f1f1;
+		padding: 20px;
+		border-radius:30px;
+	}
+	.cent{
+		text-align: center;
+	}
+
+	.but {
+		background-color: #FFA622  /* orange */;
+		border-radius: 12px;
+		border: none;
+		color: white;
+		padding: 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 21px;
+		margin: 4px 2px;
+		cursor: pointer;
+		position: absolute;
+		left:35%; 
+		<!-- top: 62%; -->
+
+
+	}
+	.but:hover {
+		box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	}
+
+
+
+</style>
+
+
+
+
+</head>
+<body id="wrapbody">
+	
+	<img class="imgicon" src="Images/icliniq.png" >
+	<div class="conten">
+		<br><br>
+		<h1 class="cent"><strong>Consult Online Doctors Anytime</strong></h1>
+		<br><br>
+		<h2 class="cent fon">Your first query is FREE!</h2>
+		<br>
+		<button class="but fon" onclick="displ()" id="myBtn" data-toggle="modal" data-target="#myModal"><strong>Ask a Doctor Online >>  </strong></button>
+	</div>
+	
+	
+	<div class="container">
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2 class="modal-title">Ask a Doctor Online</h2>
+					</div>
+					<div class="modal-body">
+						<p>Ask a doctor online and get quick medical advice for your health queries. Our medical panel consists of over 2500 doctors from 80+ specialities. Get professional medical advice and second opinion now!</p>
+					</div>
+
+					<div class="modal-body">
+						<h4><strong>Enter Your Health Query</strong></h4>
+
+						<!-- <img src="G:\NLP_ML\16march\html\dart.png" alt="DARTexon Congitive Science" style="position: relative;left: 100px">  -->
+						<br>
+
+						Input Chat Text Here:  <br></br> 
+						<textarea  name="text" id='querybox' rows="14" cols="10" wrap="soft" style="height:100px;font-size:14pt; width: 500px"></textarea> 
+						<br></br> 
+
+						<button type="button" onclick="extractsymptoms();" style="position: relative;left: 150px">Get Symptoms</button> 
+						<input type="button" value="Clear" id="clear" style="position: relative;left: 200px"> 
+
+						<br></br> 
+						<div> 
+							Extracted Symptoms:  
+							<br></br> 
+							<div id='outputdiv' > 
+
+							</div>
+							<br></br>
+							Diagnosis:
+
+						</div> 
+						<ul>
+							<div id="diagdiv">
+							</div>
+						</ul> 		
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	
+
+	<script>
+		$("#clear").click(function(ev) {
+			debugger;
+			$('#querybox').val('');
+			document.getElementById('outputdiv').innerHTML = " ";
+			document.getElementById('diagdiv').innerHTML = " ";
+		});
+	</script>
+</body>
+</html>

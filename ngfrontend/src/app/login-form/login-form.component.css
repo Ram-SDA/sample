@@ -1,0 +1,15 @@
+.fullscreen_bg {
+
+    background-size: cover;
+    background-position: 50% 50%;
+    background-image: url('/assets/images/pgBanners/loginPgBig.jpg');
+    background-repeat:no-repeat;
+    min-height:500px;
+}
+
+.loginPage .card {
+    padding:25px;
+    background-color: #ffffffa3;
+}
+
+.loginPage label {color: #303030;}

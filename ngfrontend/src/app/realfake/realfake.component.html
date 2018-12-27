@@ -1,0 +1,90 @@
+
+<div class="row no-margins">
+  <div class="col-sm-12">
+    <img class="img-fluid" src="assets/images/pgBanners/realfake.jpg"/>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h5 class="pgTitle"><span class="titleLine orange"></span>Fake or Real Quiz</h5>
+  </div>
+  <div class="col-sm-12">
+    <h6 class="pgHeader">Few images are AI generated can you identify?</h6>
+  </div>
+</div>
+<div class="row topBigMargin realQuiz row justify-content-md-center">
+  <div class="col-md-6 col-sm-12 col-xs-12">
+
+    <div class="" *ngIf="quizStatus=='NEW'">
+
+
+      <div class="card-body">
+        <h5 class="card-title">Quiz</h5>
+        <p class="card-text">Welcome to Real or AI Generated Quiz. You will be prompted with a set of images, mark it as real or AI generated.
+        Lets see if you can identify AI generated images.</p>
+        <a (click)="startQuiz()" class="btn btn-primary">Start Quiz</a>
+      </div>
+    </div>
+
+
+    <div class="" *ngIf="quizStatus=='OPEN'">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-8">
+            <p>Question ({{current+1}}/{{collections.length}})</p>
+          </div>
+          <div class="col-4 text-right">
+            <p>Score ({{this.score}})</p>
+          </div>
+        </div>
+
+      </div>
+      <img class="card-img-top transitionSmall" src="{{collections[current].img}}" alt="Quiz Image">
+      <div class="card-body">
+        <div class="row" *ngIf="questionStatus=='Q'">
+          <div class="col-6">
+            <a (click)="selectRealImage()" class="btn btn-success ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Real Image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+          </div>
+          <div class="col-6 text-right">
+            <a (click)="selectAIImage()" class="btn btn-danger">AI Generated Image</a>
+
+          </div>
+        </div>
+
+        <div class="row" *ngIf="questionStatus=='A'">
+          <div class="col-sm-12"  *ngIf="collections[current].real == currentAnswer">
+            <p *ngIf="currentAnswer==false">Correct ! This is a AI Generated Image</p>
+            <p *ngIf="currentAnswer==true">Correct ! {{collections[current].text}}</p>
+          </div>
+          <div class="col-sm-12"  *ngIf="collections[current].real != currentAnswer">
+            <p *ngIf="currentAnswer==false">Wrong ! {{collections[current].text}}</p>
+            <p *ngIf="currentAnswer==true">Wrong ! This is a AI Generated Image</p>
+          </div>
+          <div class="col-sm-12" *ngIf="current<(collections.length-1)">
+            <a (click)="nextQuestion()" class="btn btn-primary">Next Question</a>
+          </div>
+          <div class="col-sm-12" *ngIf="current==(collections.length-1)">
+            <a (click)="nextQuestion()" class="btn btn-primary">Finish</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="" *ngIf="quizStatus=='END'">
+      <div class="card-header">
+        Real or AI Generated
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">Congrats on Completing the Quiz</h5>
+        <p class="card-text">You have scored {{score}} out of {{size}}.</p>
+        <a (click)="restartQuiz()" class="btn btn-primary">Restart Quiz</a>
+      </div>
+    </div>
+
+
+  </div>
+</div>

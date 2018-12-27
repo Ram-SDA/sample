@@ -1,0 +1,76 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="row no-margins mainBanner">
+  <div class="col-sm-12">
+
+
+    <ngb-carousel *ngIf="banners" [showNavigationArrows]="true" [showNavigationIndicators]="false">
+      <ng-template ngbSlide *ngFor="let item of banners">
+        <img [src]="item.img" class="img-fluid" alt="Random slide">
+
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+</div>
+
+<div class="row homeCards">
+  <div class="col">
+
+
+
+
+    <h4 class="blockTitle">Experience Center</h4>
+    <div class="row">
+      <div class="col" *ngFor="let item of experiences;let i = index" style="width: 18rem;">
+        <div class="hmPageHld" (click)="openLink(item.link)">
+          <img class="card-img-top transitionSmall" src="{{item.img}}" alt="{{item.desc}}">
+          <div class="card-body">
+            <h5 class="card-title"><span class="titleLine orange"></span>{{item.title}}</h5>
+            <p class="card-text">{{item.desc}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="blockTitle">Latest Tech in Deep Learning</h4>
+    <div class="row">
+      <div class="col" *ngFor="let item of deepLearnings;let i = index" style="width: 18rem;">
+        <div class="hmPageHld" (click)="openLink(item.link)">
+          <img class="card-img-top transitionSmall" src="{{item.img}}" alt="{{item.desc}}">
+          <div class="card-body">
+            <h5 class="card-title"><span class="titleLine orange"></span>{{item.title}}</h5>
+            <p class="card-text">{{item.desc}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <h4 class="blockTitle">AI Driven Knowledge Management</h4>
+    <div class="row">
+      <div class="col" *ngFor="let item of aiKMs;let i = index" style="width: 18rem;">
+        <div class="hmPageHld" (click)="openLink(item.link)">
+          <img class="card-img-top transitionSmall" src="{{item.img}}" alt="{{item.desc}}">
+          <div class="card-body">
+            <h5 class="card-title"><span class="titleLine orange"></span>{{item.title}}</h5>
+            <p class="card-text">{{item.desc}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="blockTitle">AI enabled Blockchain</h4>
+    <div class="row">
+      <div class="col" *ngFor="let item of aiBlockchains;let i = index" style="width: 18rem;">
+        <div class="hmPageHld" (click)="openLink(item.link)">
+          <img class="card-img-top transitionSmall" src="{{item.img}}" alt="{{item.desc}}">
+          <div class="card-body">
+            <h5 class="card-title"><span class="titleLine orange"></span>{{item.title}}</h5>
+            <p class="card-text">{{item.desc}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

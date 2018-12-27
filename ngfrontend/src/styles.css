@@ -1,0 +1,217 @@
+/* You can add global styles to this file, and also import other style files */
+/* binu@dronasys.com */
+
+
+html,
+body {
+    height: 100%;
+    background-color:#eee;
+}
+
+
+
+
+
+
+p {color:black;}
+
+footer  {padding-top:15px;}
+footer a.nav-link {font-size:12px;}
+footer a.nav-link:hover {color:#fff;}
+footer small {font-size:12px !important;}
+
+
+input, a {cursor:pointer;}
+a:disabled,a.disabled  {
+    cursor:default;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    color:#FFF !important;
+}
+
+/* small media overrides */
+@media only screen and (max-width: 720px) {
+
+    .navbar-brand img {width: 255px;margin-left:-15px;}
+    .table tr th {font-size:12px;font-weight:100;}
+    .table tr td {font-size:12px;}
+    .loginPage .card {margin:100px 10px;}
+}
+/* common *
+
+ */
+.longPg {height:auto !important;}
+.mainPg {height: 100%;min-height:800px;padding-bottom:30px;}
+.whiteBG {background-color:#fff;}
+
+.blackBG {background-color:#000;}
+
+.blackBG * {color:#eee;;}
+
+
+.orange {color:orangered;}
+
+/*menu items */
+
+@media (min-width: 768px) {
+    .navbar-right {
+        margin-top: -50px;
+    }
+    .loginPage .card {margin-top:150px;margin-bottom:150px;}
+}
+.navbar-collapse {
+    float: left;
+    width: 100%;
+    clear: both;
+}
+
+a {color:#4f2f89}
+a:hover,a:visited {color:#6E48B6}
+.navbar a {color:#808080;}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #808080;
+    text-decoration: none;
+    background-color: #f8f8f8;
+}
+
+
+.dropdown-toggle::after {
+
+    margin-left: 0;
+
+}
+
+.btn-primary {
+    color: #fff;
+    background-color:#4f2f89;
+    border-color: #4f2f89;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #6E48B6;
+    border-color: #6E48B6;
+}
+
+.table .thead-dark th {
+    background-color: #f36623;
+    color: #fff;
+    border-color: transparent;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.01);
+}
+
+.topBigMargin {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.no-margins {
+  margin-right: -30px;
+  margin-left: -30px;;
+
+
+}
+
+.transitionSmall{
+    transition: all 2s ease;
+    -webkit-transition: all 2s ease;
+    -moz-transition: all 2s ease;
+    -o-transition: all 2s ease;
+    -ms-transition: all 2s ease;
+}
+
+.pointer {cursor:pointer;}
+
+h1,h2,h3,h4,h5,h6 {color:black;}
+
+.navBreadcrumb nav {    margin-top: 45px;}
+.navBreadcrumb nav ol { background-color:transparent;padding-bottom:0;margin-bottom:0;}
+.mainHeader {    margin-bottom: 3px;}
+
+.mainBanner {margin-bottom:20px;}
+
+
+.pgTitle {margin-top:5px;}
+.pgTitle ::before {content:"\2014";}
+.pgHeader {margin-top:0px;
+    color: black;
+    font-size: 16px;}
+
+
+.homeCards .card-title ::before {
+    content:"\2014";
+
+}
+.homeCards .hmPageHld,card-img-top {cursor:pointer;overflow:hidden;}
+.homeCards h4.blockTitle {margin: 40px 0 20px;}
+.homeCards .card-text {font-size: 14px;
+    line-height: 20px;}
+
+.homeCards .hmPageHld:hover img{
+    transform: scale(1.03);
+}
+.homeCards .hmPageHld .card-body{
+    padding-left: 0;
+}
+
+.homeCards .hmPageHld img{
+    transform: scale(1);
+}
+
+ .titleLine {padding-right:10px;font-size:22px;}
+
+h4.blockTitle {
+    border-bottom: 1px solid #8a8a8a;
+    padding-bottom: 10px;
+   margin-top:10px;
+}
+
+
+.finalImageHld img.finalImage {}
+
+.iDress card-header {
+    background-color:#f1f1f173;
+    color:black;
+}
+
+.card-header p {margin-bottom:0;padding-bottom:0}
+.realQuiz .card-body {padding-left:0;padding-right:0}
+.realQuiz .btn {font-weight:100;font-size:13px;}
+/*div.iDress .carousel-control-prev-icon {*/
+    /*background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;*/
+/*}*/
+
+/*div.iDress  .carousel-control-next-icon {*/
+    /*background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;*/
+/*}*/
+
+/* pagination */
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #4f2f89;
+    border-color: #4f2f89;
+}
+
+.page-link {
+
+    color: #4f2f89;
+
+}
+
+.iAssist.accordion {margin-bottom:20px;}
+
+.iAssist.accordion .card:first-of-type {
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.carousel-control-prev-icon{
+    background-image: url('/assets/images/prev.png')
+}
+.carousel-control-next-icon{
+    background-image: url('/assets/images/next.png')
+}
